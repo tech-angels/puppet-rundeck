@@ -14,6 +14,7 @@ export BOOTSTRAP_CP=$(find <%= @rdeck_base %>/bootstrap -name \*.jar -printf %p:
 export RDECK_JVM="-Drdeck.config=<%= @properties_dir %> \
 -Drdeck.base=<%= @rdeck_base %> \
 -Drundeck.server.configDir=<%= @properties_dir %> \
+-Drundeck.jetty.connector.forwarded=<%= @connector_forwarded %> \
 -Dserver.datastore.path=<%= @rdeck_base %>/data \
 -Drundeck.server.serverDir=<%= @rdeck_base %> \
 -Drdeck.projects=<%= @projects_dir %> \

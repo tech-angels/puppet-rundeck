@@ -48,6 +48,9 @@
 # [*ssl_enabled*]
 #   Enable ssl for the rundeck web application.
 #
+# [*connector_forwarded*]
+#   Informs jetty it is behind a reverse proxy.
+#
 # [*projects_organization*]
 #  The organization value that will be set by default for any projects.
 #
@@ -120,6 +123,7 @@ class rundeck (
   $acl_template                 = $rundeck::params::acl_template,
   $service_logs_dir             = $rundeck::params::service_logs_dir,
   $ssl_enabled                  = $rundeck::params::ssl_enabled,
+  $connector_forwarded          = $rundeck::params::connector_forwarded,
   $framework_config             = $rundeck::params::framework_config,
   $projects_organization        = $rundeck::params::projects_default_org,
   $projects_description         = $rundeck::params::projects_default_desc,
@@ -153,6 +157,7 @@ class rundeck (
   validate_hash($auth_config)
   validate_hash($auth_users)
   validate_bool($ssl_enabled)
+  validate_bool($connector_forwarded)
   validate_string($projects_organization)
   validate_string($projects_description)
   validate_re($rd_loglevel, ['^ALL$', '^DEBUG$', '^ERROR$', '^FATAL$', '^INFO$', '^OFF$', '^TRACE$', '^WARN$'])
