@@ -24,17 +24,9 @@
 #
 <%= @auth_config['file']['admin_user'] %>:<%= @auth_config['file']['admin_password'] %>,user,admin,architect,deploy,build
 <%- if @auth_config['file']['auth_users']
-      @auth_config['file']['auth_users'].each do |key,value|
-        if key.eql?('username')    -%>
-<%=       value                     %>:
-<%-     elsif key.eql?('password') -%>
-<%=       value                    -%>,
-<%      elsif key.eql?('roles')
-          value.each do |v|        -%>
-<%=         v                      -%>,
-<%-       end
-        else
-        end
+      @auth_config['file']['auth_users'].each do |user_entry| %>
+<%=     user_entry['username'] %>:<%= user_entry['password'] %>,<%= user_entry['roles'].join(',') %>
+<%
       end
     end
 -%>
